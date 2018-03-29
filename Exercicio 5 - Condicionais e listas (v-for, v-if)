@@ -1,0 +1,46 @@
+<template lang="pug">
+#exercise
+  //- 1) Hook up the button to toggle the display of the two paragraphs. Use both v-if and v-show and inspect the elements to see the difference
+  div
+    v-btn(@click="mostrar = !mostrar") Ativar
+    p(v-if="mostrar") You either see me ...
+    p(v-else) ...or me
+    p(v-show="mostrar") You either see me ...
+    p(v-show="!mostrar") ...or me
+  //- 2) Output an <ul> of array elements of your choice. Also print the index of each element.
+  ul
+    li(v-for="(jogos, index) in listaDeJogos") {{ jogos }} {{ index }}
+  //- 3) Print all key-value pairs of the following object: {title: 'Lord of the Rings', author: 'J.R.R. Tolkiens', books: '3'}. Also print the index of each item.
+  ul
+    li(v-for="(informacoes, key, index) in filme")  --- {{ key }} {{ informacoes}} {{index}}
+  //- 4) Print the following object (only the values) and also create a nested loop for the array: {name: 'TESTOBJECT', data: [1.67, 1.33, 0.98, 2.21]} (hint: use v-for and v-if to achieve this)
+  ul
+    li(v-if="mostrar" v-for="data in exercicio4.data"
+    v-bind:key='data') {{ data }}
+    li(v-show="!mostrar" v-for="name in exercicio4.name") {{ name }}
+</template>
+<script>
+export default {
+  data: () => ({
+    mostrar: true,
+    listaDeJogos: [
+    'dark souls',
+    'borderlands',
+    ],
+    filme: {
+      title: 'Lord of the Rings',
+      author: 'J.R.R. Tolkiens',
+      books: '3',
+    },
+    exercicio4: {
+      name: 'TESTOBJECT',
+      data: [
+        1.67,
+        1.33,
+        0.98,
+        2.21
+      ],
+    }
+  }),
+};
+</script>
