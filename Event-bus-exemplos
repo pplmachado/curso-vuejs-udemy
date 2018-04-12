@@ -1,0 +1,22 @@
+<template>
+EXEMPLO 1--------------------------------------------SETANDO UMA BOOLEANA EM OUTRO CHILD COMPONEMT -----------------------
+@click="abrirFormularioEditar(props.item)"
+
+    abrirFormularioEditar() {
+      this.editar = true;
+      this.$bus.$emit('abrir-editar', this.editar);
+      this.$bus.$emit('abrir-bottom-sheet');
+    },
+NO FILHO 
+
+  created() {
+    this.$bus.$on('abrir-editar', (editar) => {
+      this.editar = editar;
+    });
+  },
+  methods: {
+      editar() {
+      this.editar = true;
+    },
+   }
+--------------------------------------------------------------------------------------------------------------------------
