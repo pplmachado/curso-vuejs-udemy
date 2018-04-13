@@ -19,4 +19,30 @@ NO FILHO
       this.editar = true;
     },
    }
---------------------------------------------------------------------------------------------------------------------------
+EXEMPLO 2 --------------------------------------------- ENVIANDO UM V-MODEL DE CHILD PRA PAI
+
+Tecnicos
+<template>
+    Componente
+        telefones(v-mode="payload.telefones >> Vai receber os inputs deste componente 
+        no data dentro do Payload um array contendo os telefones.
+</template>
+Telefones
+
+<script>
+export default {
+        props: ['value'],
+    }
+    methods: {
+          salvarTelefone() {
+        this.value.push(this.telefone);
+        // - this.$emit('input', this.value) >>>>>>>>>>> Esse cara aqui ia server para forçar a entrada caso ao invés do v-model tivesse utilizado um v-bind.sync
+        // - this.$emit('updated:telefones', this.value)
+
+        this.telefone = {
+          descricao: '',
+          numero: '',
+        };
+     }
+   },
+</script>
